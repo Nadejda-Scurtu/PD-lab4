@@ -1,5 +1,6 @@
 import sys
 from PyQt5 import QtWidgets, QtGui
+from create_annotation import create_annotation_file
 from get_next import get_next_instance
 
 
@@ -47,6 +48,13 @@ class DatasetApp(QtWidgets.QWidget):
             self.create_annotation_button.setEnabled(True)
             self.next_class1_button.setEnabled(True)
             self.next_class2_button.setEnabled(True)
+
+    def create_annotation(self):
+        if self.folderpath:
+            custom_path = QtWidgets.QFileDialog.getExistingDirectory(self, 'Выберите папку для файла аннотации')
+            create_annotation_file(self.folderpath, custom_path)
+            pass
+
 
     
     def get_next_class1(self):
